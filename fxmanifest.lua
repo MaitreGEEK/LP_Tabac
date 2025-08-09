@@ -1,29 +1,21 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'QBX Tabac Job'
-author 'Littlepork1'
+description 'Job Tabac pour QBX Core'
+author 'TonPseudo'
 version '1.0.0'
 
 shared_scripts {
-    '@ox_lib/init.lua',
-    '@qbx_core/shared/locale.lua',
+    '@qbx_core/import.lua', -- Import QBX Core
     'config.lua',
-    '@qbx_core/modules/lib.lua'	
+    'locales/*.lua'
 }
 
 client_scripts {
-    'client/*',
-    '@qbx_core/modules/playerdata.lua',
+    'client.lua'
 }
 
 server_scripts {
-    'server/*'
-}
-
-lua54 'yes'
-
-dependencies {
-    'ox_lib',
-    'qbx_core'
+    '@oxmysql/lib/MySQL.lua',
+    'server.lua'
 }

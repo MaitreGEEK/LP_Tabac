@@ -1,41 +1,26 @@
 Config = {}
 
-Config.Debug = true
+-- Positions
+Config.Fields = {
+    vec3(2479.71, 4735.13, 33.3),
+    vec3(2473.56, 4741.88, 33.3),
+    vec3(2467.64, 4734.59, 33.3),
+    vec3(2471.57, 4725.44, 33.3),
+    vec3(2487.81, 4720.66, 33.3),
+    vec3(2493.33, 4730.73, 33.3),
+    vec3(2489.82, 4739.81, 33.3)
+} -- Champs tabac (récolte)
 
--- Job Settings
-Config.JobName = 'tabac' -- Make sure this matches exactly with your job name
+Config.Process = vector3(1544.74, 2233.19, 77.67)   -- Transformation
+Config.Sell = vector3(-1172.54, -1571.12, 4.66)     -- Vente
 
--- Blip Settings
-Config.Blip = {
-    coords = vec3(-43.38, -1060.54, 27.81), -- Replace with your job location
-    sprite = 79,
-    display = 4,
-    scale = 0.7,
-    color = 5,
-    name = "Tabac" -- Replace with your job name
-}
+-- Items
+Config.ItemRaw = 'tabac_brut'
+Config.ItemProcessed = 'cigarette'
 
--- Vehicle Settings
-Config.VehicleSpawnPoint = {
-    coords = vec4(-51.47, -1050.81, 27.96, 343.64), -- Your coordinates
-    marker = {
-        type = 36,
-        size = vector3(1.5, 1.5, 1.5),
-        color = {r = 0, g = 150, b = 255, a = 155},
-        distance = 7.0
-    },
-    vehicle = {
-        model = 'mule', -- Make sure this is a valid vehicle model
-        defaultFuel = 100
-    }
-}
+-- Prix
+Config.SellPrice = 10
 
-Config.VehicleReturnPoint = {
-    coords = vec3(-50.72, -1068.71, 26.41), -- Replace with return point coords
-    marker = {
-        type = 1,
-        size = vector3(3.0, 3.0, 1.0),
-        color = {r = 255, g = 0, b = 0, a = 155},
-        distance = 7.0
-    }
-} 
+-- Modèle prop plante et timer respawn
+Config.PlantModel = 'prop_weed_01' -- à adapter si besoin
+Config.RespawnTime = 5 -- en secondes (5 minutes)
