@@ -123,4 +123,42 @@ end
 
 CreateThread(function()
     SpawnRandomPlants()
+
+    -- Interaction pour transformer le tabac
+    ox_target:addBoxZone({
+        coords = Config.Process,
+        size = vec3(2, 2, 2),
+        rotation = 0,
+        debug = false,
+        options = {
+            {
+                name = 'qbx_tabac_process',
+                icon = 'fas fa-industry',
+                label = 'Transformer tabac',
+                onSelect = function()
+                    TriggerServerEvent('qbx_tabac:process')
+                end,
+                distance = 2.5,
+            }
+        }
+    })
+
+    -- Interaction pour vendre les cigarettes
+    ox_target:addBoxZone({
+        coords = Config.Sell,
+        size = vec3(2, 2, 2),
+        rotation = 0,
+        debug = false,
+        options = {
+            {
+                name = 'qbx_tabac_sell',
+                icon = 'fas fa-dollar-sign',
+                label = 'Vendre cigarettes',
+                onSelect = function()
+                    TriggerServerEvent('qbx_tabac:sell')
+                end,
+                distance = 2.5,
+            }
+        }
+    })
 end)
