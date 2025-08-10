@@ -1,71 +1,71 @@
 # 🌿 QBX-TABAC
 
-QBX-TABAC est un script métier complet pour **QBX Core** permettant de récolter, transformer et vendre du tabac de manière immersive sur votre serveur FiveM.
+**QBX-TABAC** is a complete **QBX Core** job script that allows players to harvest, process, and sell tobacco in an immersive way on your FiveM server.  
 
-Ce script utilise **ox_target** et **ox_lib** pour les interactions, et gère le spawn/despawn dynamique de plantes de tabac sur la carte.
-
----
-
-## 📌 Fonctionnalités
-
-- 🌱 **Récolte dynamique** : Spawn aléatoire de plantes dans des champs prédéfinis  
-- 🔄 **Respawn automatique** des plantes après collecte complète  
-- 🏭 **Transformation** du tabac récolté en cigarettes  
-- 💰 **Vente** des cigarettes auprès d’un PNJ ou zone dédiée  
-- 🔒 Anti-spam récolte grâce à un flag `isHarvesting`  
-- 🎯 Utilisation d’**ox_target** pour toutes les interactions  
-- 📍 Zones de **process** et **vente** configurables  
+It uses **ox_target** and **ox_lib** for all interactions, and handles dynamic spawning/despawning of tobacco plants across predefined fields.
 
 ---
 
-## 📂 Dépendances
+## 📌 Features
 
-Assurez-vous d’avoir installé :
+- 🌱 **Dynamic harvesting** – Random plant spawns within predefined fields  
+- 🔄 **Automatic respawn** – Plants respawn once the field is fully harvested  
+- 🏭 **Processing** – Convert harvested tobacco into cigarettes  
+- 💰 **Selling** – Sell cigarettes to a ped or at a dedicated selling zone  
+- 🔒 Harvest anti-spam using an `isHarvesting` flag  
+- 🎯 Uses **ox_target** for all interactions  
+- 📍 Configurable **processing**, **selling** zones, and **map blips**  
+- 👷 **Job-restricted** interactions (only tobacco workers can see plants & zones)  
 
-- [qbx_core](https://github.com/Qbox-project/qbx_core)
-- [ox_target](https://github.com/overextended/ox_target)
-- [ox_lib](https://github.com/overextended/ox_lib)
+---
+
+## 📂 Dependencies
+
+Make sure you have installed:
+
+- [qbx_core](https://github.com/Qbox-project/qbx_core)  
+- [ox_target](https://github.com/overextended/ox_target)  
+- [ox_lib](https://github.com/overextended/ox_lib)  
 
 ---
 
 ## ⚙️ Installation
 
-1. Téléchargez le script et placez-le dans votre dossier `resources/[qbx]`
-2. Ajoutez dans votre `server.cfg` :
+1. Download the script and place it into your `resources/[qbx]` folder.  
+2. Add the following to your `server.cfg`:  
     ```cfg
     ensure ox_lib
     ensure ox_target
     ensure qbx_core
     ensure QBX-TABAC
     ```
-3. Ajoutez les **items** ci-dessous dans votre base de données (table `items`)
+3. Add the required **items** into your database (table `items`) or `shared/items.lua` depending on your inventory system.  
 
 ---
 
-## 📦 Items requis
+## 📦 Required Items
 
-| nom           | label         | poids | description                   |
-|---------------|--------------|-------|--------------------------------|
-| tabac         | Feuille de tabac | 100   | Tabac brut récolté dans les champs |
-| cigarette     | Cigarette     | 50    | Cigarette roulée prête à vendre |
+| name         | label         | weight | description                          |
+|--------------|--------------|--------|--------------------------------------|
+| tabac_brut   | Raw Tobacco   | 50     | Tobacco leaves for making cigarettes |
+| cigarette    | Cigarettes    | 115    | Probably not good for you, but oh well |
 
-
-À ajouter dans votre `ox_inventory/shared/items.lua` ou équivalent :
+**Add this to** your `ox_inventory/shared/items.lua` (or equivalent):
 
 ```lua
 ['tabac_brut'] = {
-    label = 'Tabac Brut',
-    description = "Des feuilles pour créer des cigarettes",
+    label = 'Raw Tobacco',
+    description = "Leaves used to create cigarettes",
     weight = 50,
     client = {
         image = "tabac_brut.png",
     },
 },
 
-['cigarette'] = { -- social item that causes slight damage to health
+['cigarette'] = { -- Social item that slightly reduces health
     label = 'Cigarettes',
     weight = 115,
-    description = "These probably aren't good for you, but fuck it",
+    description = "These probably aren't good for you, but whatever",
     client = {
         anim = { dict = 'amb@world_human_aa_smoke@male@idle_a', clip = 'idle_c', flag = 49 },
         prop = { model = 'bzzz_cigarpack_cig002', 
@@ -74,28 +74,3 @@ Assurez-vous d’avoir installé :
         usetime = 16000,
     }
 },
-```
----
-
-## 🛠️ Configuration
-
-Le fichier `Config.lua` contient :
-
-```lua
-Config = {}
-
--- Modèle de la plante
-Config.PlantModel = `prop_plant_01`
-
--- Coordonnées des champs (ID unique => coords)
-Config.Fields = {
-    [1] = vector3(123.4, 456.7, 78.9),
-    [2] = vector3(125.4, 458.7, 78.9),
-    -- Ajoutez autant de points que vous voulez
-}
-
--- Coordonnées de la zone de transformation
-Config.Process = vector3(200.0, -1000.0, 30.0)
-
--- Coordonnées de la zone de vente
-Config.Sell = vector3(210.0, -1010.0, 30.0)
