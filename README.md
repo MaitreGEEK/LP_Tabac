@@ -49,6 +49,32 @@ Assurez-vous d’avoir installé :
 | tabac         | Feuille de tabac | 100   | Tabac brut récolté dans les champs |
 | cigarette     | Cigarette     | 50    | Cigarette roulée prête à vendre |
 
+
+À ajouter dans votre `ox_inventory/shared/items.lua` ou équivalent :
+
+```lua
+['tabac_brut'] = {
+    label = 'Tabac Brut',
+    description = "Des feuilles pour créer des cigarettes",
+    weight = 50,
+    client = {
+        image = "tabac_brut.png",
+    },
+},
+
+['cigarette'] = { -- social item that causes slight damage to health
+    label = 'Cigarettes',
+    weight = 115,
+    description = "These probably aren't good for you, but fuck it",
+    client = {
+        anim = { dict = 'amb@world_human_aa_smoke@male@idle_a', clip = 'idle_c', flag = 49 },
+        prop = { model = 'bzzz_cigarpack_cig002', 
+        pos = vec3(0.0, 0.0, 0.0), rot = vec3(0.0, 0.0, 0.0), bone = 28422 },
+        disable = { move = false, car = false, combat = true },
+        usetime = 16000,
+    }
+},
+
 ---
 
 ## 🛠️ Configuration
