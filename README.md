@@ -74,7 +74,7 @@ Assurez-vous d’avoir installé :
         usetime = 16000,
     }
 },
-
+```
 ---
 
 ## 🛠️ Configuration
