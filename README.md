@@ -37,7 +37,7 @@ Make sure you have installed:
     ensure ox_lib
     ensure ox_target
     ensure qbx_core
-    ensure QBX-TABAC
+    ensure LP-Tabac
     ```
 3. Add the required **items** into your database (table `items`) or `shared/items.lua` depending on your inventory system.  
 
