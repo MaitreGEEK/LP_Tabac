@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'Job Tabac pour QBX Core'
-author 'TonPseudo'
+author 'Littlepork1'
 version '1.0.0'
 
 shared_scripts {
