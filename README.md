@@ -1,3 +1,6 @@
+
+<img width="1280" height="640" alt="QB GoFast" src="https://github.com/user-attachments/assets/345be0a8-b5b9-4615-88a8-708c5bc86a3a" />
+
 # 🌿 LP-TABAC
 
 **LP-TABAC** is a complete **QBX Core** job script that allows players to harvest, process, and sell tobacco in an immersive way on your FiveM server.  
